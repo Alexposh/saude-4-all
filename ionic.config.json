@@ -1,0 +1,7 @@
+{
+  "name": "Saude4all",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
