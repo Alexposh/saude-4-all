@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-button shape="round"
+        ><ion-img
+          src="./../../assets/logo.jpg"
+          alt="Logo of clinic"
+          class="logo-site"
+        ></ion-img
+      ></ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button
+        ><ion-icon name="notifications-outline" size="medium"></ion-icon
+      ></ion-button>
+      <ion-button
+        ><ion-icon name="person-circle-outline" size="large"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-text>Speciality</ion-text>
+  <ion-img
+    src="https://tse2.mm.bing.net/th/id/OIP.YqLbD9qVh6MiK3RyLeCAxwHaEl?r=0&cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    alt="doctor image"
+    class="profile-img"
+  ></ion-img>
+  <div class="details-container">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4"
+          ><ion-icon name="calendar-outline" size="large"></ion-icon
+        ></ion-col>
+        <ion-col size="8"
+          ><ion-label
+            >Appointment was on the 8th of August 2025.</ion-label
+          ></ion-col
+        >
+      </ion-row>
+      <ion-row>
+        <ion-col size="4"
+          ><ion-icon name="location-outline" size="large"></ion-icon
+        ></ion-col>
+        <ion-col size="8"><ion-label>Location</ion-label></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4"><ion-icon name="person-outline" size="large"> </ion-icon></ion-col>
+        <ion-col size="8"><ion-label>John Dorian</ion-label></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

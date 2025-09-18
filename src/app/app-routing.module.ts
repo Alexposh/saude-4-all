@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'appointment-history',
     loadChildren: () => import('./pages/appointment-history/appointment-history.module').then( m => m.AppointmentHistoryPageModule)
   },
+  {
+    path: 'doctor-profile',
+    loadChildren: () => import('./pages/doctor-profile/doctor-profile.module').then( m => m.DoctorProfilePageModule)
+  },
   
 ];
 @NgModule({
