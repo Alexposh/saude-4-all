@@ -1,23 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-   
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-         <ion-button shape="round"><ion-img src="./../../assets/logo.jpg" alt="Logo of clinic" class="logo-site" ></ion-img></ion-button>
-      </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-button shape="round"
+        ><ion-img
+          src="./../../assets/logo.jpg"
+          alt="Logo of clinic"
+          class="logo-site"
+        ></ion-img
+      ></ion-button>
+    </ion-buttons>
 
-      <ion-buttons slot="end">
-        <ion-button><ion-icon name="notifications-outline" size="medium"></ion-icon></ion-button>
-        <ion-button><ion-icon name="person-circle-outline" size="large"></ion-icon></ion-button>
+    <ion-buttons slot="end">
+      <ion-button
+        ><ion-icon name="notifications-outline" size="medium"></ion-icon
+      ></ion-button>
+      <ion-button
+        ><ion-icon name="person-circle-outline" size="large"></ion-icon
+      ></ion-button>
 
-        <!-- <ion-avatar>
+      <!-- <ion-avatar>
           <img
             alt="User profile"
             src="https://ionicframework.com/docs/img/demos/avatar.svg"
           />
         </ion-avatar> -->
-      </ion-buttons>
-
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -28,39 +36,53 @@
     </ion-toolbar>
   </ion-header> -->
 
-  <ion-text color="tertiary">
-    <h2>Welcome back Alex!</h2>
-  </ion-text>
+  <div class="container">
+    <div class="header">
+      <ion-text>
+        <h2>Welcome back Alex!</h2>
+      </ion-text>
 
-  <ion-text color="tertiary">Are you ready for your next appointment?</ion-text>
+      <ion-text>Are you ready for your next appointment?</ion-text>
+    </div>
+    <div class="appointment-data">
+      <ion-img
+        id="heading"
+        src="../../assets/clinic.png"
+        alt="The Wisconsin State Capitol building in Madison, WI at night"
+      ></ion-img>
+      <div class="appointment-details">
 
-    <ion-img id="heading"
-    src="https://docs-demo.ionic.io/assets/madison.jpg"
-    alt="The Wisconsin State Capitol building in Madison, WI at night"
-  ></ion-img>
+      
+      <ion-item>
+        <ion-icon name="calendar-outline"></ion-icon>
+        <ion-text>Your next appointment is on the 20th August 2025</ion-text>
+      </ion-item>
 
-  <ion-item>
-    <ion-icon name="calendar-outline"></ion-icon>
-    <ion-text color="tertiary">Your next appointment is on the 20th August 2025</ion-text>
-  </ion-item>
+      <ion-item>
+        <ion-icon name="location-outline"></ion-icon>
+        <ion-text>Location</ion-text>
+      </ion-item>
 
-  <ion-item>
-    <ion-icon name="location-outline"></ion-icon>
-    <ion-text color="tertiary">Location</ion-text>
-  </ion-item>
+      <ion-item>
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-text>Doctor Name</ion-text>
+      </ion-item>
+      </div>
+    </div>
 
-  <ion-item>
-    <ion-icon name="person-outline"></ion-icon>
-    <ion-text color="tertiary">Doctor Name</ion-text>
-  </ion-item>
+    <div class="link-to-details">
+      <ion-button  routerLink="/next-appointments"
+      >See more <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+    </ion-button>
+    </div>
+    
+    <!-- <ion-button fill="outline" routerLink="/appointment-edit"
+      >Edit from next app
+      <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+    </ion-button> -->
 
+    <!-- <ion-button fill="outline" routerLink="/appointment-edit">Edit <ion-icon name="arrow-forward-circle-outline"></ion-icon> </ion-button> -->
 
-   
-  <ion-button fill="outline" routerLink="/next-appointments">See more <ion-icon name="arrow-forward-circle-outline"></ion-icon> </ion-button>
-  <ion-button fill="outline" routerLink="/appointment-edit">Edit from next app <ion-icon name="arrow-forward-circle-outline"></ion-icon> </ion-button>
-
-  <!-- <ion-button fill="outline" routerLink="/appointment-edit">Edit <ion-icon name="arrow-forward-circle-outline"></ion-icon> </ion-button> -->
-
-  <!-- <app-explore-container></app-explore-container> -->
-  
+    <!-- <app-explore-container></app-explore-container> -->
+  </div>
 </ion-content>

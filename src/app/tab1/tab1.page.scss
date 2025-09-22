@@ -7,3 +7,36 @@
 #heading{
     width: 300px;
 }
+
+.container{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2rem 1rem;
+    color: rgb(27, 187, 232);
+    
+}
+
+.appointment-details{
+    padding: 1rem 0;
+}
+.appointment-data{
+    color: chartreuse;
+    padding: 2rem 0;
+}
+
+ion-img{
+    border-radius: 10px;
+}
+ion-item, ion-icon{
+    color: rgb(17, 183, 212);
+}
+
+ion-icon{
+    padding:  0 .5rem;
+}
+
+// .link-to-details{
+//     width: 50%;
+//     height: 100px;
+//     margin: auto;
+//     align-self: center;
+// }
