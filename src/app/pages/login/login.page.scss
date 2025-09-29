@@ -1,0 +1,9 @@
+ion-card-title{
+    display: block;
+    margin: auto;
+    --color:var(--patient-display-color);
+}
+
+ion-content, ion-button{
+    --background: var(--patient-display-color);
+}

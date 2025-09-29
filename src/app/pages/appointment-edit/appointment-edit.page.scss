@@ -1,9 +1,18 @@
-.logo-site{
-    width: 50px;
-    height: 10%;
-    border-radius: 45px;    
+ion-content{
+    --background: var(--patient-display-color);
 }
 
-#heading{
-    width: 300px;
+ion-card{
+    padding: 1rem;
+}
+
+ion-button{
+    display: block;
+    font-size: 15px;
+    margin: 2rem auto;
+    --background: var(--patient-display-color);
+}
+
+ion-icon{
+    margin: .2rem .8rem;
 }

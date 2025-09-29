@@ -1,9 +1,19 @@
-.logo-site{
-    width: 50px;
-    height: 10%;
-    border-radius: 45px;    
+ion-content{
+    --background: var(--patient-display-color);
 }
 
-#heading{
-    width: 300px;
+ion-list{
+    width: 96%;
+    height: 96%;
+}
+
+ion-item{
+    width: 96%;
+}
+
+ion-icon{
+    margin: 0.5rem;
+}
+ion-list-header{
+    font-size: 18px;
 }

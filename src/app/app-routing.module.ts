@@ -22,6 +22,26 @@ const routes: Routes = [
     path: 'doctor-profile',
     loadChildren: () => import('./pages/doctor-profile/doctor-profile.module').then( m => m.DoctorProfilePageModule)
   },
+  {
+    path: 'loader',
+    loadChildren: () => import('./pages/loader/loader.module').then( m => m.LoaderPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'register-patient',
+    loadChildren: () => import('./pages/register-patient/register-patient.module').then( m => m.RegisterPatientPageModule)
+  },
+  {
+    path: 'register-doctor',
+    loadChildren: () => import('./pages/register-doctor/register-doctor.module').then( m => m.RegisterDoctorPageModule)
+  },
   
 ];
 @NgModule({

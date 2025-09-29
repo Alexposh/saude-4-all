@@ -1,88 +1,36 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-      <ion-button shape="round"
-        ><ion-img
-          src="./../../assets/logo.jpg"
-          alt="Logo of clinic"
-          class="logo-site"
-        ></ion-img
-      ></ion-button>
-    </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-button
-        ><ion-icon name="notifications-outline" size="medium"></ion-icon
-      ></ion-button>
-      <ion-button
-        ><ion-icon name="person-circle-outline" size="large"></ion-icon
-      ></ion-button>
-
-      <!-- <ion-avatar>
-          <img
-            alt="User profile"
-            src="https://ionicframework.com/docs/img/demos/avatar.svg"
-          />
-        </ion-avatar> -->
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
+<app-header></app-header>
 <ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="small">Welcome back Alex!</ion-title>
-    </ion-toolbar>
-  </ion-header> -->
-
-  <div class="container">
-    <div class="header">
-      <ion-text>
-        <h2>Welcome back Alex!</h2>
-      </ion-text>
-
-      <ion-text>Are you ready for your next appointment?</ion-text>
-    </div>
-    <div class="appointment-data">
+  <div class="flex-center">
+    <ion-card class="display-card">
       <ion-img
         id="heading"
         src="../../assets/clinic.png"
         alt="The Wisconsin State Capitol building in Madison, WI at night"
       ></ion-img>
-      <div class="appointment-details">
+      <ion-card-header>
+        <ion-card-title>Welcome back Alex!</ion-card-title>
+      </ion-card-header>
 
-      
-      <ion-item>
-        <ion-icon name="calendar-outline"></ion-icon>
-        <ion-text>Your next appointment is on the 20th August 2025</ion-text>
-      </ion-item>
+      <ion-card-content>
+        <ion-item>
+          <ion-icon name="calendar-outline"></ion-icon>
+          <ion-text>Your next appointment is on the 20th August 2025</ion-text>
+        </ion-item>
 
-      <ion-item>
-        <ion-icon name="location-outline"></ion-icon>
-        <ion-text>Location</ion-text>
-      </ion-item>
+        <ion-item>
+          <ion-icon name="location-outline"></ion-icon>
+          <ion-text>Location</ion-text>
+        </ion-item>
 
-      <ion-item>
-        <ion-icon name="person-outline"></ion-icon>
-        <ion-text>Doctor Name</ion-text>
-      </ion-item>
-      </div>
-    </div>
-
-    <div class="link-to-details">
-      <ion-button  routerLink="/next-appointments"
-      >See more <ion-icon name="arrow-forward-circle-outline"></ion-icon>
-    </ion-button>
-    </div>
-    
-    <!-- <ion-button fill="outline" routerLink="/appointment-edit"
-      >Edit from next app
-      <ion-icon name="arrow-forward-circle-outline"></ion-icon>
-    </ion-button> -->
-
-    <!-- <ion-button fill="outline" routerLink="/appointment-edit">Edit <ion-icon name="arrow-forward-circle-outline"></ion-icon> </ion-button> -->
-
-    <!-- <app-explore-container></app-explore-container> -->
+        <ion-item>
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-text>Doctor Name</ion-text>
+        </ion-item>
+        <ion-button routerLink="/next-appointments"
+          >See all
+          <!-- <ion-icon name="arrow-forward-circle-outline" ></ion-icon> -->
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicModule } from "@ionic/angular";
 import { IonHeader } from "@ionic/angular/standalone";
+import { IonicModule } from "@ionic/angular";
 import { HeaderComponent } from "src/app/shared/header/header.component";
 
 @Component({
-  selector: 'app-next-appointments',
-  templateUrl: './next-appointments.page.html',
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
   imports: [IonicModule, HeaderComponent],
-  styleUrls: ['./next-appointments.page.scss'],
 })
-export class NextAppointmentsPage implements OnInit {
+export class RegisterPage implements OnInit {
 
   constructor() { }
 

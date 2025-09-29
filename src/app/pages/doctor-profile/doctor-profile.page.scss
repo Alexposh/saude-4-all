@@ -1,21 +1,30 @@
-.logo-site{
-    width: 50px;
-    height: 10%;
-    border-radius: 45px;    
+ion-content{
+    // --background: var(--patient-display-color);
 }
 
-#heading{
-    width: 300px;
+.doctor-profile-content{
+    background-color: rgb(255, 255, 255);
+    width: 96%;
+    height: 100%;
+    margin: auto;
+    padding: .5rem;
 }
-
 ion-img{
-    width: 300px;
-    margin: 5% auto;
-    // border: 2px solid red;
-    // border-radius: 15px;
+    width: 85%;
+    margin: 2rem auto;
+    border-radius: 10%;
 }
-
 .details-container{
     width: 300px;
     margin: 7% auto;
+}
+
+ion-badge{
+    width: 45px;
+    height: 20px;
+    font-size: 15px;
+}
+
+#rating-value{
+
 }

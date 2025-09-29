@@ -1,0 +1,35 @@
+<app-header></app-header>
+<ion-content [fullscreen]="true">
+  <div class="flex-center">
+    <ion-card class="display-card">
+      <ion-card-header>
+        <ion-card-title size="full">Saude All</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div>
+            <ion-item>
+              <ion-label for="username"position="floating">Email</ion-label>
+              <ion-input id="username" formControlName="username" type="email"></ion-input>
+            </ion-item>
+          </div>
+
+          <div>
+            <ion-item>
+              <ion-label for="password" position="floating">Password</ion-label>
+              <ion-input id="password" formControlName="password" type="password"></ion-input>
+            </ion-item>
+          </div>
+          <ion-button color="dark" fill="clear" size="full"
+            >Forgot password?</ion-button
+          >
+          <ion-button size="full" type="submit">Login</ion-button>
+          <ion-button (click)="showData()" color="secondary" fill="clear" size="full"
+            >Register</ion-button
+          >
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
