@@ -19,7 +19,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/appointment-history/appointment-history.module').then( m => m.AppointmentHistoryPageModule)
   },
   {
-    path: 'doctor-profile',
+    path: 'doctor-profile/:id',
     loadChildren: () => import('./pages/doctor-profile/doctor-profile.module').then( m => m.DoctorProfilePageModule)
   },
   {

@@ -13,7 +13,7 @@ import { Doctor } from 'src/app/models/doctor';
 })
 export class AppointmentEditPage implements OnInit {
 
-  private doctorSevice= inject(DoctorService);
+  private doctorSevice = inject(DoctorService);
 
   constructor() { }
 

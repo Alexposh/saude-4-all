@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map,Observable } from 'rxjs';
 import { Doctor } from '../models/doctor';
-import { Observable } from 'rxjs';
+import { KeyValueId } from '../models/keyValueId';
+import { HttpService } from './http/http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,11 @@ import { Observable } from 'rxjs';
 export class DoctorService {
   
 
-  constructor(private httpClient:HttpClient) { 
+  constructor(private httpClient:HttpClient, private httpService: HttpService) { 
 
   }
+
+  standardImageUrl: string = 'https://awkward-turquoise-hawk.myfilebase.com/ipfs/';
 
   getAllDoctors():Observable<Doctor[]>{
     return this.httpClient.get<Doctor[]>("http://localhost:8080/api/v1/doctors").pipe(
@@ -23,23 +26,23 @@ export class DoctorService {
     );
   }
 
-  // getDoctorById(id:string){
-  //   return this.httpClient.get<Doctor>(`http://localhost:8080/api/v1/doctors/doctor/${id}`).pipe(
-  //       map((response:Doctor)=>{
-  //         return response;
-  //     })
-  //   );    
-  // }
-
   getDoctorById(id: string): Observable<Doctor> {
   return this.httpClient.get<Doctor>(`http://localhost:8080/api/v1/doctors/doctor/${id}`);
   }
 
-  createDoctor(doctor: Doctor): Observable<Doctor> {
-    return this.httpClient.post<Doctor>(
+  createDoctor(newDoctor:{}): Observable<{}> {
+    return this.httpClient.post<{}>(
       'http://localhost:8080/api/v1/doctors/doctor',
-      doctor
+      newDoctor
     );
+  }
+
+  updateOneField(dto:KeyValueId): Observable<KeyValueId>{
+    console.log(dto);
+   
+    let headers = this.httpService.generateHttpJsonHeaders();
+    return this.httpClient.post<KeyValueId>('http://localhost:8080/api/v1/doctors/doctor-update-field',
+      dto, {headers});
   }
 
   updateDoctor(doctor: Doctor): Observable<Doctor>{
