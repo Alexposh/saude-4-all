@@ -1,0 +1,33 @@
+.logo-site{
+    width: 50px;
+    height: 10%;
+    border-radius: 45px;    
+}
+
+#heading{
+    width: 80%;
+}
+
+ion-content{
+    --background: var(--patient-display-color);
+}
+
+ion-img, ion-card-title{
+    --border-radius: 10px;
+    margin: 1rem auto;
+}
+ion-card-title, ion-item, ion-icon{
+    color: var(--patient-display-color);
+    
+}
+
+ion-icon{
+    padding:  0 .5rem;
+}
+ion-button{
+    display:block;
+    width: 70%;;
+    margin: auto;
+    margin-top: 2rem;
+    --background: var(--patient-display-color);
+}

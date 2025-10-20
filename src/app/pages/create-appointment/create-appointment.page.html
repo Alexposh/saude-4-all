@@ -1,0 +1,78 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <div class="flex-center">
+    <ion-card class="display-card">
+      <ion-list-header>Create Appointment</ion-list-header>
+
+      <form [formGroup]="creationForm" 
+            id="appointment-creation-form" 
+            method="POST" 
+            (ngSubmit)="onSubmit($event)">
+          
+          
+      <ion-list>
+        <ion-item>
+          <ion-card-content> Speciality: </ion-card-content>
+          <ion-select aria-label="speciality" placeholder="Select one option" formControlName="speciality">
+            @for(speciality of allSpecialities;track speciality){
+            <ion-select-option [value]="speciality"
+              >{{speciality}}</ion-select-option
+            >
+            }
+            <!-- <ion-select-option value="generalist">Generalist</ion-select-option>
+            <ion-select-option value="dentist">Dentist</ion-select-option>
+            <ion-select-option value="dermatologist"
+              >Dermatologist</ion-select-option
+            > -->
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-item>
+          <ion-card-content> Doctor: </ion-card-content>
+          <ion-select aria-label="doctor" placeholder="Select one option" formControlName="doctor">
+            @for(doctor of allDoctors;track doctor){
+            <ion-select-option [value]="doctor.id"
+              >{{doctor.name}}</ion-select-option
+            >
+            }
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-item>
+          <ion-card-content> Location: </ion-card-content>
+          <ion-select aria-label="location" placeholder="Select one option" formControlName="location">
+            @for(location of allLocations;track location){
+            <ion-select-option [value]="location.id"
+              >{{ location.name }}</ion-select-option
+            >
+            }
+            <!-- <ion-select-option value="Bucharest">Bucharest</ion-select-option>
+            <ion-select-option value="Lisbon">Lisbon</ion-select-option>
+            <ion-select-option value="Amsterdam">Amsterdam</ion-select-option> -->
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    
+    <ion-text>Date :</ion-text>
+      <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime  id="datetime" (ionChange)="onDateChange($event)"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+
+      <ion-button 
+        (click)="submit()">SAVE <ion-icon name="save-outline"></ion-icon
+      ></ion-button> 
+    </form>
+
+      </ion-card
+    ><!-- <ion-button fill="outline" routerLink="/appointment-edit">Edit <ion-icon name="arrow-forward-circle-outline"></ion-icon> </ion-button> -->
+  </div>
+</ion-content>

@@ -22,6 +22,10 @@ export class PatientService {
       );
   }
 
+  getPatientById(id:string) :Observable<Patient>{
+    return this.httpClient.get<Patient>(`http://localhost:8080/api/v1/patients/patient/${id}`);
+  }
+
   createPatient(newPatient:{}): Observable <{}> {
     return this.httpClient.post<{}>(
       'http://localhost:8080/api/v1/patients/patient', newPatient

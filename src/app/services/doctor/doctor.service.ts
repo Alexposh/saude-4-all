@@ -1,29 +1,34 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { map,Observable } from 'rxjs';
-import { Doctor } from '../models/doctor';
-import { KeyValueId } from '../models/keyValueId';
-import { HttpService } from './http/http.service';
+import { Doctor } from '../../models/doctor';
+import { KeyValueId } from '../../models/keyValueId';
+import { HttpService } from '../http/http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorService {
   
-
-  constructor(private httpClient:HttpClient, private httpService: HttpService) { 
+  private httpClient = inject(HttpClient);
+  constructor( private httpService: HttpService) { 
 
   }
 
   standardImageUrl: string = 'https://awkward-turquoise-hawk.myfilebase.com/ipfs/';
 
   getAllDoctors():Observable<Doctor[]>{
-    return this.httpClient.get<Doctor[]>("http://localhost:8080/api/v1/doctors").pipe(
-      map((response:Doctor[] )=>{
-        response.forEach(r=>console.log("a doctor named "+ r.name));
-        return response;
-      })
-    );
+    return this.httpClient.get<Doctor[]>("http://localhost:8080/api/v1/doctors");
+    // .pipe(
+    //   map((response:Doctor[] )=>{
+    //     // response.forEach(r=>console.log("a doctor named "+ r.name));
+    //     return response;
+    //   })
+    // );
+  }
+
+  getAllSpecialities(){
+    return this.httpClient.get<string[]>('http://localhost:8080/api/v1/doctors/specialities');
   }
 
   getDoctorById(id: string): Observable<Doctor> {

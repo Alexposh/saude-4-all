@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { IonHeader } from "@ionic/angular/standalone";
 import { IonicModule } from "@ionic/angular";
 import { HeaderComponent } from "src/app/shared/header/header.component";
-import { DoctorService } from 'src/app/services/doctor.service';
+import { DoctorService } from 'src/app/services/doctor/doctor.service';
 import { Doctor } from 'src/app/models/doctor';
 
 @Component({
@@ -26,7 +26,9 @@ export class AppointmentEditPage implements OnInit {
   }
   
 
-  allDoctors :any[] = [];
+  allDoctors:Doctor[] = [];
+
+  
 
   getAllDoctors(){    
     this.doctorSevice.getAllDoctors().subscribe({

@@ -4,7 +4,7 @@ import { IonicModule } from "@ionic/angular";
 import { HeaderComponent } from "src/app/shared/header/header.component";
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Doctor } from 'src/app/models/doctor';
-import { DoctorService } from 'src/app/services/doctor.service';
+import { DoctorService } from 'src/app/services/doctor/doctor.service';
 
 @Component({
   selector: 'app-register-doctor',

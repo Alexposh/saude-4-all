@@ -5,17 +5,17 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule) // import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
     path: 'next-appointments',
     loadChildren: () => import('./pages/next-appointments/next-appointments.module').then( m => m.NextAppointmentsPageModule)
   },
-  { path: 'appointment-edit', 
+  { path: 'appointment-edit/:id', 
     loadChildren: () => import('./pages/appointment-edit/appointment-edit.module').then(m => m.AppointmentEditPageModule) 
   },
   {
-    path: 'appointment-history',
+    path: 'appointment-history/:id',
     loadChildren: () => import('./pages/appointment-history/appointment-history.module').then( m => m.AppointmentHistoryPageModule)
   },
   {
@@ -41,6 +41,18 @@ const routes: Routes = [
   {
     path: 'register-doctor',
     loadChildren: () => import('./pages/register-doctor/register-doctor.module').then( m => m.RegisterDoctorPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'patient-home/:id',
+    loadChildren: () => import('./pages/patient-home/patient-home.module').then( m => m.PatientHomePageModule)
+  },
+  {
+    path: 'create-appointment/:id',
+    loadChildren: () => import('./pages/create-appointment/create-appointment.module').then( m => m.CreateAppointmentPageModule)
   },
   
 ];

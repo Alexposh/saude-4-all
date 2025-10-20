@@ -1,17 +1,16 @@
-import { Component, inject } from '@angular/core';
-import { Patient } from '../models/patient';
-import { HttpClient } from '@angular/common/http';
-import { PatientService } from '../services/patient/patient.service';
+import { Component, inject, OnInit } from '@angular/core';
+import { HeaderComponent } from "src/app/shared/header/header.component";
+import { IonicModule } from "@ionic/angular";
+import { PatientService } from 'src/app/services/patient/patient.service';
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss'],
-  standalone: false,
+  selector: 'app-home',
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
+  imports: [HeaderComponent, IonicModule],
 })
-export class Tab1Page {
+export class HomePage implements OnInit {
 
   private patientService = inject(PatientService);
   constructor(private route: ActivatedRoute) {}
