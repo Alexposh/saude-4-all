@@ -11,14 +11,14 @@ import { HttpService } from '../http/http.service';
 export class DoctorService {
   
   private httpClient = inject(HttpClient);
+  standardApi:string = 'http://localhost:8080/api/v1';
   constructor( private httpService: HttpService) { 
-
   }
 
   standardImageUrl: string = 'https://awkward-turquoise-hawk.myfilebase.com/ipfs/';
 
   getAllDoctors():Observable<Doctor[]>{
-    return this.httpClient.get<Doctor[]>("http://localhost:8080/api/v1/doctors");
+    return this.httpClient.get<Doctor[]>(`${this.standardApi}/doctors`);
     // .pipe(
     //   map((response:Doctor[] )=>{
     //     // response.forEach(r=>console.log("a doctor named "+ r.name));
@@ -28,16 +28,16 @@ export class DoctorService {
   }
 
   getAllSpecialities(){
-    return this.httpClient.get<string[]>('http://localhost:8080/api/v1/doctors/specialities');
+    return this.httpClient.get<string[]>(`${this.standardApi}/doctors/specialities`);
   }
 
   getDoctorById(id: string): Observable<Doctor> {
-  return this.httpClient.get<Doctor>(`http://localhost:8080/api/v1/doctors/doctor/${id}`);
+  return this.httpClient.get<Doctor>(`${this.standardApi}/doctors/doctor/${id}`);
   }
 
   createDoctor(newDoctor:{}): Observable<{}> {
     return this.httpClient.post<{}>(
-      'http://localhost:8080/api/v1/doctors/doctor',
+      `${this.standardApi}/doctor`,
       newDoctor
     );
   }
@@ -46,12 +46,12 @@ export class DoctorService {
     console.log(dto);
    
     let headers = this.httpService.generateHttpJsonHeaders();
-    return this.httpClient.post<KeyValueId>('http://localhost:8080/api/v1/doctors/doctor-update-field',
+    return this.httpClient.post<KeyValueId>(`${this.standardApi}/doctors/doctor-update-field`,
       dto, {headers});
   }
 
   updateDoctor(doctor: Doctor): Observable<Doctor>{
-    return this.httpClient.patch<Doctor>('http://localhost:8080/api/v1/doctors/doctor',
+    return this.httpClient.patch<Doctor>(`${this.standardApi}/doctors/doctor`,
       doctor)
   }
 

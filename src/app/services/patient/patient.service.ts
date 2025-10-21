@@ -10,25 +10,20 @@ export class PatientService {
   constructor(private httpClient: HttpClient) {}
 
   standardImageUrl: string = 'https://awkward-turquoise-hawk.myfilebase.com/ipfs/';
+  standardApi:string = 'http://localhost:8080/api/v1';
 
   getAllPatients(): Observable<Patient[]> {
     return this.httpClient
-      .get<Patient[]>('http://localhost:8080/api/v1/patients')
-      .pipe(
-        map((response: Patient[]) => {
-          response.forEach((r) => console.log('a patient named ' + r.name));
-          return response;
-        })
-      );
+      .get<Patient[]>(`${this.standardApi}/patients`)
   }
 
   getPatientById(id:string) :Observable<Patient>{
-    return this.httpClient.get<Patient>(`http://localhost:8080/api/v1/patients/patient/${id}`);
+    return this.httpClient.get<Patient>(`${this.standardApi}/patients/patient/${id}`);
   }
 
-  createPatient(newPatient:{}): Observable <{}> {
+  createPatient(newPatient:{}){
     return this.httpClient.post<{}>(
-      'http://localhost:8080/api/v1/patients/patient', newPatient
+      `${this.standardApi}/patients/patient`, newPatient
     );
     
   }
