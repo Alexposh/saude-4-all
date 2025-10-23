@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PatientService } from 'src/app/services/patient/patient.service';
 import { LoginService } from 'src/app/services/login/login.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-login',
@@ -14,22 +15,22 @@ import { Router } from '@angular/router';
   imports: [IonicModule, HeaderComponent, ReactiveFormsModule],
 })
 export class LoginPage implements OnInit {
-  private patientService = inject(PatientService);
   private loginService = inject(LoginService);
   private router = inject(Router);
 
-  allPatients: any[] = [];
+  userFound:User = {id:"", email:"",password:"",role_id:""};
 
   constructor() {}
 
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(3)]),
   });
 
   onSubmit() {
-    const formData = this.loginForm.value;
+    const formData = this.loginForm.value as {email:string, password:string};
     console.log('Form Data:', formData);
+    this.logIn(formData);
   }
 
   showData() {
@@ -39,12 +40,22 @@ export class LoginPage implements OnInit {
     console.log('after the test');
   }
 
-  logInPatient() {
+  logIn(formData:{email:string, password:string}) {
     if (this.loginForm.valid) {
-      const formData = this.loginForm.value as { username: string; password: string };;
-      this.loginService.searchPatient(formData).subscribe({
-        next: (patient) => {
-          this.router.navigate(['/patient-home',patient.id])
+      // const formData = this.loginForm.value as {email:string, password:string};
+      this.loginService.searchUser(formData).subscribe({
+        next: (user) => {
+          console.log(user.role_id);
+          if(user.role_id === "55558400-e29b-41d4-a716-446655440010"){
+            this.router.navigate(['/patient-home', user.id])
+          }
+
+          if(user.role_id === "33338400-e29b-41d4-a716-446655440010"){
+            this.router.navigate(['/doctor-home', user.id])
+          }
+          // this.userFound = user;
+
+          // this.router.navigate(['/patient-home', user])
         },
         error: (error) => {
           console.log('There was an error finding the patient: ' + error);
@@ -55,20 +66,10 @@ export class LoginPage implements OnInit {
   }  
   }
 
-  // showAllPatients(){
-  //   this.patientService.getAllPatients().subscribe(
-  //     {
-  //       next: (patients) => {
-  //         console.log("show all patients");
-  //         this.allPatients = patients;
-  //         // console.log(this.allPatients);
-  //       },
-  //       error: (error) => {
-  //         console.log("An error getting the patients" + error)
-  //       }
-  //     }
-  //   )
-  // }
+  registerUser(){
+    this.router.navigate(['/register'])
+  }
+
 
   ngOnInit() {
     // this.showAllPatients();

@@ -8,7 +8,7 @@
     <ion-card-content>
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <ion-list>
-          <div>
+          <!-- <div>
             <ion-item>
               <ion-label for="username" position="floating">Name</ion-label>
               <ion-input
@@ -17,7 +17,7 @@
                 type="text"
               ></ion-input>
             </ion-item>
-          </div>
+          </div> -->
           <ion-item>
             <ion-label for="email" position="floating">Email</ion-label>
             <ion-input
@@ -28,6 +28,24 @@
           </ion-item>
 
           <ion-item>
+            <ion-label for="password" position="floating">Password</ion-label>
+            <ion-input
+              id="password"
+              formControlName="password"
+              type="password"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label for="password-confirm" position="floating">Repeat Password</ion-label>
+            <ion-input
+              id="password-confirm"
+              formControlName="passwordConfirm"
+              type="password"
+            ></ion-input>
+          </ion-item>
+
+          <!-- <ion-item>
             <ion-label for="dateOfBirth" position="floating"
               >Date of birth</ion-label
             >
@@ -36,12 +54,12 @@
               formControlName="dateOfBirth"
               type="text"
             ></ion-input>
-          </ion-item>
+          </ion-item> -->
 
-          <ion-item>
+          <!-- <ion-item>
             <ion-label for="iban" position="floating">IBAN</ion-label>
             <ion-input id="iban" formControlName="iban" type="text"></ion-input>
-          </ion-item>
+          </ion-item> -->
         </ion-list>
         <ion-button color="success" fill="clear" size="full" type="submit"
           >Register</ion-button
