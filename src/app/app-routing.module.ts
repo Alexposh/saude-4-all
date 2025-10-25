@@ -5,7 +5,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule) // import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./pages/welcome/welcome/welcome.module').then( m => m.WelcomePageModule) // import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
     path: 'next-appointments',
@@ -54,6 +54,14 @@ const routes: Routes = [
     path: 'create-appointment/:id',
     loadChildren: () => import('./pages/create-appointment/create-appointment.module').then( m => m.CreateAppointmentPageModule)
   },
+  {
+    path: 'login-doctor',
+    loadChildren: () => import('./pages/login-doctor/login-doctor/login-doctor.module').then( m => m.LoginDoctorPageModule)
+  },
+  // {
+  //   path: 'welcome',
+  //   loadChildren: () => import('./pages/welcome/welcome/welcome.module').then( m => m.WelcomePageModule)
+  // },
   
 ];
 @NgModule({

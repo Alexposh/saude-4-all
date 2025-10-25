@@ -3,7 +3,6 @@ import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PatientService } from 'src/app/services/patient/patient.service';
 import { LoginService } from 'src/app/services/login/login.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
@@ -18,17 +17,23 @@ export class LoginPage implements OnInit {
   private loginService = inject(LoginService);
   private router = inject(Router);
 
-  userFound:User = {id:"", email:"",password:"",role_id:""};
+  userFound: User = { id: '', email: '', password: '', role_id: '' };
 
   constructor() {}
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
   });
 
   onSubmit() {
-    const formData = this.loginForm.value as {email:string, password:string};
+    const formData = this.loginForm.value as {
+      email: string;
+      password: string;
+    };
     console.log('Form Data:', formData);
     this.logIn(formData);
   }
@@ -40,38 +45,29 @@ export class LoginPage implements OnInit {
     console.log('after the test');
   }
 
-  logIn(formData:{email:string, password:string}) {
+  logIn(formData: { email: string; password: string }) {
     if (this.loginForm.valid) {
       // const formData = this.loginForm.value as {email:string, password:string};
-      this.loginService.searchUser(formData).subscribe({
+      this.loginService.searchPatient(formData).subscribe({
         next: (user) => {
-          console.log(user.role_id);
-          if(user.role_id === "55558400-e29b-41d4-a716-446655440010"){
-            this.router.navigate(['/patient-home', user.id])
-          }
-
-          if(user.role_id === "33338400-e29b-41d4-a716-446655440010"){
-            this.router.navigate(['/doctor-home', user.id])
-          }
-          // this.userFound = user;
-
-          // this.router.navigate(['/patient-home', user])
+          this.router.navigate(['/patient-home', user.id]);
         },
         error: (error) => {
           console.log('There was an error finding the patient: ' + error);
         },
       });
-    }  else {
-    this.loginForm.markAllAsTouched();
-  }  
+    } else {
+      this.loginForm.markAllAsTouched();
+    }
   }
 
-  registerUser(){
-    this.router.navigate(['/register'])
+  registerPatient() {
+    this.router.navigate(['/register-patient']);
   }
-
 
   ngOnInit() {
     // this.showAllPatients();
   }
+
+
 }

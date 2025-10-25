@@ -41,7 +41,7 @@ export class RegisterPatientPage implements OnInit {
         password: this.registerForm.value.password!,
         role: "patient"
       };
-      this.loginService.createUser(newPatient).subscribe({
+      this.loginService.createPatient(newPatient).subscribe({
         next: (newPatientCreated) => {
             console.log("created patient: "+ newPatientCreated);         
     

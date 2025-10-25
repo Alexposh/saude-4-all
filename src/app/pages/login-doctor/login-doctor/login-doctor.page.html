@@ -3,10 +3,9 @@
   <div class="flex-center">
     <ion-card class="display-card">
       <ion-card-header>
-        <ion-card-title size="full">Welcome!</ion-card-title>
-        
+        <ion-card-title size="full">Saude All</ion-card-title>
       </ion-card-header>
-          <ion-text>Please Login</ion-text>
+
       <ion-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div>
@@ -26,7 +25,7 @@
             >Forgot password?</ion-button
           >
           <ion-button size="full" type="submit">Login</ion-button>
-          <ion-button (click)="registerPatient()" color="secondary" fill="clear" size="full"
+          <ion-button (click)="registerDoctor()" color="secondary" fill="clear" size="full"
             >Register</ion-button
           >
         </form>
@@ -34,4 +33,3 @@
     </ion-card>
   </div>
 </ion-content>
-
