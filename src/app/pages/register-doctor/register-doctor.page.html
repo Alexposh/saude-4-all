@@ -9,15 +9,6 @@
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <ion-list>
           <ion-item>
-            <ion-label for="username" position="floating">Name</ion-label>
-            <ion-input
-              id="username"
-              formControlName="name"
-              type="text"
-            ></ion-input>
-          </ion-item>
-
-          <ion-item>
             <ion-label for="email" position="floating">Email</ion-label>
             <ion-input
               id="email"
@@ -27,33 +18,22 @@
           </ion-item>
 
           <ion-item>
-            <ion-label for="department" position="floating">Department</ion-label>
+            <ion-label for="password" position="floating">Password</ion-label>
             <ion-input
-              id="department"
-              formControlName="department"
-              type="text"
+              id="password"
+              formControlName="password"
+              type="password"
             ></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label for="specialization" position="floating"
-              >Specialization</ion-label
+            <ion-label for="password-confirm" position="floating"
+              >Repeat Password</ion-label
             >
             <ion-input
-              id="specialization"
-              formControlName="specialization"
-              type="text"
-            ></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label for="dateOfBirth" position="floating"
-              >Date of birth</ion-label
-            >
-            <ion-input
-              id="dateOfBirth"
-              formControlName="dateOfBirth"
-              type="text"
+              id="password-confirm"
+              formControlName="passwordConfirm"
+              type="password"
             ></ion-input>
           </ion-item>
         </ion-list>

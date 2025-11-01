@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { IonButtons, IonToolbar } from "@ionic/angular/standalone";
 import { IonicModule } from "@ionic/angular";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,10 @@ import { IonicModule } from "@ionic/angular";
 })
 export class HeaderComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
 }

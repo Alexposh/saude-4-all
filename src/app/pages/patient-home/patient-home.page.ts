@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { HeaderComponent } from "src/app/shared/header/header.component";
 import { IonicModule } from "@ionic/angular";
 import { PatientService } from 'src/app/services/patient/patient.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from 'src/app/models/patient';
 import { Appointment } from 'src/app/models/appointment';
 
@@ -15,6 +15,8 @@ import { Appointment } from 'src/app/models/appointment';
 export class PatientHomePage implements OnInit {
 
  private patientService = inject(PatientService);
+ private router = inject(Router);
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -26,11 +28,17 @@ export class PatientHomePage implements OnInit {
 
   patientId: string | null = '';
   patient:any = { };
+  userImage:string = 'https://cdni.iconscout.com/illustration/premium/thumb/male-user-image-illustration-svg-download-png-6515860.png'
   appointments: Appointment[] = [];
 
 
   getPatientAppointments(idOfPatient:string){
     
+  }
+
+  editProfile(){
+    console.log("redirect to patient-edit");
+    this.router.navigate(['/patient-edit', this.patient.id]);
   }
 
   getPatient(idOfPatient:string){
@@ -46,5 +54,6 @@ export class PatientHomePage implements OnInit {
 
   }
 
+  
 
 }

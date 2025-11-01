@@ -1,8 +1,10 @@
 export interface Patient{
     id:string;
-    name: string;
+    firstName: string;
+    lastName: string;
     image: string;
     dateOfBirth: string;
-    iban: string;
-    contactDetails: string;
+    phoneNumber: string;
+    gender: string;
+    email: string;
 }

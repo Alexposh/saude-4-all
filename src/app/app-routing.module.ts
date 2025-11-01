@@ -58,6 +58,14 @@ const routes: Routes = [
     path: 'login-doctor',
     loadChildren: () => import('./pages/login-doctor/login-doctor/login-doctor.module').then( m => m.LoginDoctorPageModule)
   },
+  {
+    path: 'patient-edit/:id',
+    loadChildren: () => import('./pages/patient-edit/patient-edit.module').then( m => m.PatientEditPageModule)
+  },
+  {
+    path: 'doctor-edit/:id',
+    loadChildren: () => import('./pages/doctor-edit/doctor-edit.module').then( m => m.DoctorEditPageModule)
+  },
   // {
   //   path: 'welcome',
   //   loadChildren: () => import('./pages/welcome/welcome/welcome.module').then( m => m.WelcomePageModule)

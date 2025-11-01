@@ -1,0 +1,118 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-text>Please enter your details:</ion-text>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="patientEditForm" (ngSubmit)="onSubmit()">
+        <ion-list>
+          <ion-item>
+            <!-- <input type="file" (change)="onFileSelected($event)" />
+             -->
+
+            @if(patient.image){
+            <div>
+              <img [src]="patient.image" alt="Profile Image" width="200" />
+              <!-- <ion-item>
+                <ion-label for="image" position="floating">Image:</ion-label>
+                <ion-input
+                  id="image"
+                  formControlName="image"
+                  type="text"
+                ></ion-input>
+              </ion-item> -->
+
+              <!-- <button (click)="changePhoto()">Upload Photo</button> -->
+            </div>
+            }
+          </ion-item>
+          <ion-item>
+            @if(changePhoto){
+            <ion-text>New Photo ID:</ion-text>
+            <ion-input
+              id="image"
+              formControlName="newImage"
+              label-placement="floating"
+              fill="solid"
+              placeholder="Enter text"
+            ></ion-input>
+
+            } @else{
+            <ion-button (click)="setNewPhoto()">Change Photo</ion-button>
+            }
+          </ion-item>
+          <ion-item>
+            <ion-label for="firstName" position="floating"
+              >First Name:</ion-label
+            >
+            <ion-input
+              id="firstName"
+              formControlName="firstName"
+              type="text"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label for="lastName" position="floating">Last Name:</ion-label>
+            <ion-input
+              id="lastName"
+              formControlName="lastName"
+              type="text"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label for="dateOfBirth" position="floating"
+              >Date of Birth:</ion-label
+            >
+            <ion-input
+              id="dateOfBirth"
+              formControlName="dateOfBirth"
+              type="date"
+              lang="en-UK"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label for="phoneNumber" position="floating"
+              >Phone number:</ion-label
+            >
+            <ion-input
+              id="phoneNumber"
+              formControlName="phoneNumber"
+              type="text"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <!-- <ion-text>Gender:</ion-text> -->
+
+            <ion-select
+              label="Gender: "
+              label-placement="floating"
+              formControlName="gender"
+            >
+              @for(gender of genders;track gender){
+              <ion-select-option value="{{gender.value}}"
+                >{{ gender.displayName }}</ion-select-option
+              >
+              }
+            </ion-select>
+
+            <!-- <ion-select aria-label="Favorite Fruit" value="apple">
+              <ion-select-option value="apple">Apple</ion-select-option>
+              <ion-select-option value="banana">Banana</ion-select-option>
+              <ion-select-option value="orange">Orange</ion-select-option>
+            </ion-select> -->
+          </ion-item>
+        </ion-list>
+
+        <ion-button color="secondary" fill="clear" size="full" type="submit"
+          >Update Profile</ion-button
+        >
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

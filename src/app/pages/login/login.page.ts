@@ -49,8 +49,8 @@ export class LoginPage implements OnInit {
     if (this.loginForm.valid) {
       // const formData = this.loginForm.value as {email:string, password:string};
       this.loginService.searchPatient(formData).subscribe({
-        next: (user) => {
-          this.router.navigate(['/patient-home', user.id]);
+        next: (patient) => {
+          this.router.navigate(['/patient-home', patient.id]);
         },
         error: (error) => {
           console.log('There was an error finding the patient: ' + error);
