@@ -16,6 +16,7 @@ export class PatientHomePage implements OnInit {
 
  private patientService = inject(PatientService);
  private router = inject(Router);
+ 
 
   constructor(private route: ActivatedRoute) {}
 

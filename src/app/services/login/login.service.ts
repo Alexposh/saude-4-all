@@ -16,25 +16,24 @@ export class LoginService {
 
   constructor() { }
   createPatient(profileCreationData:{email:string, password:string}){
-      return this.httpClient.post<User>(`${this.standardUrl}/user/create`, 
+      return this.httpClient.post<User>(`${this.standardUrl}/user/create-patient`, 
         profileCreationData)      
   }
 
-  searchPatient(loginData:{email:string, password:string}):Observable<Patient>{
+  createDoctor(profileCreationData:{email:string, password:string}){
+      return this.httpClient.post<User>(`${this.standardUrl}/user/create-doctor`, 
+        profileCreationData)      
+  }
+
+   searchPatient(loginData:{email:string, password:string}):Observable<Patient>{
     return this.httpClient.post<Patient>(
       `${this.standardUrl}/user/login`, loginData);
   }
-
-
-  createDoctor(profileCreationData:{email:string, password:string}):Observable<Doctor>{
-      return this.httpClient.post<Doctor>(`${this.standardUrl}/staff/create-doctor`, 
-        profileCreationData)      
-  }
   
-  searchDoctor(loginData:{email:string, password:string}):Observable<Patient>{
-    return this.httpClient.post<Patient>(
-      `${this.standardUrl}/login-doctor`, loginData);
-  }
+  // searchDoctor(loginData:{email:string, password:string}):Observable<Patient>{
+  //   return this.httpClient.post<Patient>(
+  //     `${this.standardUrl}/login-doctor`, loginData);
+  // }
 
 
 }

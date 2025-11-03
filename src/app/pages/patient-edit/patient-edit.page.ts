@@ -9,7 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { PatientService } from 'src/app/services/patient/patient.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from 'src/app/models/patient';
 import { Gender } from 'src/app/models/gender';
 import { ImageService } from 'src/app/services/image/image.service';
@@ -33,6 +33,7 @@ export class PatientEditPage implements OnInit {
   selectedFile: File | null = null;
   imageUrl: string | null = null;
   changePhoto:boolean = false;
+  private router = inject(Router);
 
 
   previewUrl: string | ArrayBuffer | null = null;
@@ -109,6 +110,7 @@ export class PatientEditPage implements OnInit {
         this.patient = updatedPatient;
         console.log('new patient structure: ' + updatedPatient);
         this.getPatient(updatedPatient.id);
+        this.router.navigate(['/patient-home', this.patient.id]);
       },
       error: (error) => {
         console.log('Error getting the newly updated Patient: ' + error);
