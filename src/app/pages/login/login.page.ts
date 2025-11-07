@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
   private loginService = inject(LoginService);
   private router = inject(Router);
 
-  userFound: User = { id: '', email: '', password: '', role_id: '' };
+  userFound: User = { id: '', email: '', password: '', role: '' };
 
   constructor() {}
 
@@ -63,6 +63,10 @@ export class LoginPage implements OnInit {
 
   registerPatient() {
     this.router.navigate(['/register-patient']);
+  }
+
+  registerNewUser(){
+    this.router.navigate(['/register']);
   }
 
   ngOnInit() {

@@ -35,7 +35,7 @@
           <ion-select aria-label="doctor" placeholder="Select one option" formControlName="doctor">
             @for(doctor of allDoctors;track doctor){
             <ion-select-option [value]="doctor.id"
-              >{{doctor.name}}</ion-select-option
+              >{{doctor.firstName}}</ion-select-option
             >
             }
           </ion-select>

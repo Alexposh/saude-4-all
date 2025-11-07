@@ -3,19 +3,55 @@
   <div class="flex-center" >
     <ion-card class="display-card">
 
-    
-    <ion-grid>
-      <ion-row
-        ><ion-button color="success" (click)="registerPatient()"
-          >Register as a Patient</ion-button
-        ></ion-row
-      >
-      <ion-row
-        ><ion-button color="light"  (click)="registerDoctor()"
-          >Register as a Doctor</ion-button
-        ></ion-row
-      >
-    </ion-grid>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <ion-list>
+          <ion-item>
+            <ion-label for="email" position="floating">Email</ion-label>
+            <ion-input
+              id="email"
+              formControlName="email"
+              type="email"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label for="password" position="floating">Password</ion-label>
+            <ion-input
+              id="password"
+              formControlName="password"
+              type="password"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label for="password-confirm" position="floating"
+              >Repeat Password</ion-label
+            >
+            <ion-input
+              id="password-confirm"
+              formControlName="passwordConfirm"
+              type="password"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-select
+              label="Register as: "
+              label-placement="floating"
+              formControlName="role"
+            >
+              @for(role of roles;track role){
+              <ion-select-option value="{{role.value}}"
+                >{{ role.displayName }}</ion-select-option
+              >
+              }
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <ion-button color="success" fill="clear" size="full" type="submit"
+          >Register</ion-button
+        >
+      </form>
+  
     </ion-card>
   </div>
 </ion-content>

@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from 'src/app/models/patient';
 import { Gender } from 'src/app/models/gender';
 import { ImageService } from 'src/app/services/image/image.service';
+import { SharedService } from 'src/app/services/shared/shared.service';
 
 @Component({
   selector: 'app-patient-edit',
@@ -22,19 +23,19 @@ import { ImageService } from 'src/app/services/image/image.service';
 })
 export class PatientEditPage implements OnInit {
   private patientService = inject(PatientService);
+  private sharedService = inject(SharedService);
   private route = inject(ActivatedRoute);
   private imageService = inject(ImageService);
 
-
-  private standardPhotoUrl:string = 'https://awkward-turquoise-hawk.myfilebase.com/ipfs/';
+  private standardPhotoUrl: string =
+    'https://awkward-turquoise-hawk.myfilebase.com/ipfs/';
 
   patientId: string | null = '';
   genders: Gender[] = [];
   selectedFile: File | null = null;
   imageUrl: string | null = null;
-  changePhoto:boolean = false;
+  changePhoto: boolean = false;
   private router = inject(Router);
-
 
   previewUrl: string | ArrayBuffer | null = null;
 
@@ -59,7 +60,7 @@ export class PatientEditPage implements OnInit {
     phoneNumber: new FormControl(''),
     gender: new FormControl(''),
     email: new FormControl(''),
-    newImage: new FormControl('')
+    newImage: new FormControl(''),
   });
 
   ngOnInit() {
@@ -70,7 +71,7 @@ export class PatientEditPage implements OnInit {
   }
 
   getGenders() {
-    this.patientService.getAllGenders().subscribe({
+    this.sharedService.getAllGenders().subscribe({
       next: (genders: Gender[]) => {
         this.genders = genders;
         console.log('Genders loaded:', this.genders);
@@ -88,8 +89,9 @@ export class PatientEditPage implements OnInit {
   }
 
   updatePatient() {
-    if(this.changePhoto){
-      this.imageUrl = `${this.standardPhotoUrl}${this.patientEditForm.value.newImage!}`
+    if (this.changePhoto) {
+      this.imageUrl = `${this.standardPhotoUrl}${this.patientEditForm.value
+        .newImage!}`;
       this.changePhoto = !this.changePhoto;
     }
     // console.log(this.patient.email);
@@ -140,29 +142,7 @@ export class PatientEditPage implements OnInit {
       },
     });
   }
-setNewPhoto(){
-  this.changePhoto = !this.changePhoto;
-  
-  // this.patient.image = `${this.standardPhotoUrl}${this.patientEditForm.value.newImage}`
-}
-  
-  // onFileSelected(event: any): void {
-  //   this.selectedFile = event.target.files[0];
-  // }
-
-  // async onUpload(): Promise<void> {
-  //   if (!this.selectedFile) return;
-
-  //   try {
-  //     const url = await this.imageService.uploadToFilebase(
-  //       this.selectedFile,
-  //       this.patient.id
-  //     );
-  //     this.imageUrl = url;
-  //     console.log('Image uploaded:', url);
-  //     // Send `url` to your backend to save in the database
-  //   } catch (error) {
-  //     console.error('Upload failed:', error);
-  //   }
-  // }
+  setNewPhoto() {
+    this.changePhoto = !this.changePhoto;
+  }
 }

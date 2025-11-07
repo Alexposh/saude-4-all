@@ -19,12 +19,6 @@ export class DoctorService {
 
   getAllDoctors():Observable<Doctor[]>{
     return this.httpClient.get<Doctor[]>(`${this.standardApi}/doctors`);
-    // .pipe(
-    //   map((response:Doctor[] )=>{
-    //     // response.forEach(r=>console.log("a doctor named "+ r.name));
-    //     return response;
-    //   })
-    // );
   }
 
   getAllSpecialities(){
@@ -51,7 +45,7 @@ export class DoctorService {
   }
 
   updateDoctor(doctor: Doctor): Observable<Doctor>{
-    return this.httpClient.patch<Doctor>(`${this.standardApi}/doctors/doctor`,
+    return this.httpClient.put<Doctor>(`${this.standardApi}/doctors/doctor-update`,
       doctor)
   }
 

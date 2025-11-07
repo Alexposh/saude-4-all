@@ -8,7 +8,30 @@
     <ion-card-content>
       <form [formGroup]="doctorEditForm" (ngSubmit)="onSubmit()">
         <ion-list>
-       
+          <ion-item>
+            @if(doctor.image){
+            <div>
+              <img [src]="doctor.image" alt="Profile Image" width="200" />
+            </div>
+            }
+          </ion-item>
+
+          <ion-item>
+            @if(changePhoto){
+            <ion-text>New Photo ID:</ion-text>
+            <ion-input
+              id="image"
+              formControlName="newImage"
+              label-placement="floating"
+              fill="solid"
+              placeholder="Enter text"
+            ></ion-input>
+
+            } @else{
+            <ion-button (click)="setNewPhoto()">Change Photo</ion-button>
+            }
+          </ion-item>
+
           <ion-item>
             <ion-label for="firstName" position="floating"
               >First Name:</ion-label
@@ -31,15 +54,6 @@
           </ion-item>
 
           <ion-item>
-            <ion-label for="image" position="floating">Image:</ion-label>
-            <ion-input
-              id="image"
-              formControlName="image"
-              type="text"
-            ></ion-input>
-          </ion-item>
-
-          <ion-item>
             <ion-label for="dateOfBirth" position="floating"
               >Date of Birth:</ion-label
             >
@@ -52,19 +66,20 @@
           </ion-item>
 
           <ion-item>
-            <ion-label for="phoneNumber" position="floating"
-              >Phone number:</ion-label
+            <ion-select
+              label="Specialization: "
+              label-placement="floating"
+              formControlName="specialization"
             >
-            <ion-input
-              id="phoneNumber"
-              formControlName="phoneNumber"
-              type="text"
-            ></ion-input>
+              @for(spec of specializations;track spec){
+              <ion-select-option value="{{spec.value}}"
+                >{{ spec.displayName }}</ion-select-option
+              >
+              }
+            </ion-select>
           </ion-item>
 
           <ion-item>
-            <!-- <ion-text>Gender:</ion-text> -->
-
             <ion-select
               label="Gender: "
               label-placement="floating"
@@ -76,8 +91,7 @@
               >
               }
             </ion-select>
-
-                 </ion-item>
+          </ion-item>
         </ion-list>
 
         <ion-button color="secondary" fill="clear" size="full" type="submit"

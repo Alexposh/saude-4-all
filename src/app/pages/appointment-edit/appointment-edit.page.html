@@ -22,7 +22,7 @@
         <ion-item>
           <ion-select aria-label="doctor" placeholder="Doctor">
             @for(doctor of allDoctors;track doctor){
-              <ion-select-option [value]="doctor.name">{{doctor.name}}</ion-select-option>
+              <ion-select-option [value]="doctor.firstName">{{doctor.firstName}}</ion-select-option>
             }
       
           </ion-select>

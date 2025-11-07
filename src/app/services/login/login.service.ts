@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Doctor } from 'src/app/models/doctor';
@@ -25,15 +25,20 @@ export class LoginService {
         profileCreationData)      
   }
 
+  createUser(accountCreationData:{email:string, password:string, role: string}){
+    return this.httpClient.post<User>(`${this.standardUrl}/user/create-user`, 
+        accountCreationData)      
+  }
+
    searchPatient(loginData:{email:string, password:string}):Observable<Patient>{
     return this.httpClient.post<Patient>(
       `${this.standardUrl}/user/login`, loginData);
   }
   
-  // searchDoctor(loginData:{email:string, password:string}):Observable<Patient>{
-  //   return this.httpClient.post<Patient>(
-  //     `${this.standardUrl}/login-doctor`, loginData);
-  // }
+  searchDoctor(loginData:{email:string, password:string}):Observable<Patient>{
+    return this.httpClient.post<Patient>(
+      `${this.standardUrl}/user/login-doctor`, loginData);
+  }
 
 
 }

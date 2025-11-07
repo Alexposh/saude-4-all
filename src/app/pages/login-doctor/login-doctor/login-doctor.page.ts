@@ -34,19 +34,19 @@ export class LoginDoctorPage implements OnInit {
   }
 
   logIn(formData:{email:string, password:string}) {
-  //   if (this.loginForm.valid) {
-  //     // const formData = this.loginForm.value as {email:string, password:string};
-  //     this.loginService.searchDoctor(formData).subscribe({
-  //       next: (user) => {
-  //          this.router.navigate(['/doctor-home', user.id])
-  //       },
-  //       error: (error) => {
-  //         console.log('There was an error finding the patient: ' + error);
-  //       },
-  //     });
-  //   }  else {
-  //   this.loginForm.markAllAsTouched();
-  // }  
+    if (this.loginForm.valid) {
+      // const formData = this.loginForm.value as {email:string, password:string};
+      this.loginService.searchDoctor(formData).subscribe({
+        next: (doctor) => {
+           this.router.navigate(['/doctor-profile', doctor.id])
+        },
+        error: (error) => {
+          console.log('There was an error finding the doctor: ' + error);
+        },
+      });
+    }  else {
+    this.loginForm.markAllAsTouched();
+  }  
   }
  
 
