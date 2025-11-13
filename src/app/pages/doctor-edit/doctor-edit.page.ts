@@ -135,7 +135,7 @@ export class DoctorEditPage implements OnInit {
     this.doctorService.updateDoctor(newDataForDoctor).subscribe({
       next: (updatedDoctor: Doctor) => {
         this.doctor = updatedDoctor;
-        console.log('new doctor structure: ' + updatedDoctor);
+        console.log('new doctor structure: ' + updatedDoctor.firstName);
         this.getDoctor(updatedDoctor.id);
         // this.router.navigate(['/doctor-profile', this.doctor.id]);
       },

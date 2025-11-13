@@ -1,0 +1,78 @@
+<app-header> </app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-text>Please enter appointment details:</ion-text>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="appointmentCreationForm" (ngSubmit)="onSubmit()">
+        <ion-list>
+          <ion-item>
+            <ion-select
+              label="Specialization: "
+              label-placement="floating"
+              formControlName="specialization"
+            >
+              @for(spec of specializations;track spec){
+              <ion-select-option>{{spec.displayName}}</ion-select-option>
+              }
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-select
+              label="Gender: "
+              label-placement="floating"
+              formControlName="gender"
+            >
+              @for(gender of genders;track gender){
+              <ion-select-option>{{gender}}</ion-select-option>
+              }
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-select
+              label="Doctor: "
+              label-placement="floating"
+              formControlName="doctor_id"
+            >
+              @for(doctor of doctors;track doctor){
+              <ion-select-option>{{`${doctor.firstName} ${doctor.lastName}`}}</ion-select-option>
+              }
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-select
+              label="Location: "
+              label-placement="floating"
+              formControlName="doctor_id"
+            >
+              @for(spec of specializations;track spec){
+              <ion-select-option>Sample</ion-select-option>
+              }
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-select
+              label="Date: "
+              label-placement="floating"
+              formControlName="date"
+            >
+              @for(spec of specializations;track spec){
+              <ion-select-option>Sample</ion-select-option>
+              }
+            </ion-select>
+          </ion-item>
+        </ion-list>
+
+        <ion-button color="secondary" fill="clear" size="full" type="submit"
+          >Schedule</ion-button
+        >
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -30,13 +30,19 @@ export class LoginService {
         accountCreationData)      
   }
 
+
+  searchUser(loginData:{email:string, password:string}){
+    return this.httpClient.post<User>(
+      `${this.standardUrl}/user/login`, loginData);
+  }
+
    searchPatient(loginData:{email:string, password:string}):Observable<Patient>{
     return this.httpClient.post<Patient>(
       `${this.standardUrl}/user/login`, loginData);
   }
   
-  searchDoctor(loginData:{email:string, password:string}):Observable<Patient>{
-    return this.httpClient.post<Patient>(
+  searchDoctor(loginData:{email:string, password:string}):Observable<Doctor>{
+    return this.httpClient.post<Doctor>(
       `${this.standardUrl}/user/login-doctor`, loginData);
   }
 

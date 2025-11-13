@@ -66,6 +66,10 @@ const routes: Routes = [
     path: 'doctor-edit/:id',
     loadChildren: () => import('./pages/doctor-edit/doctor-edit.module').then( m => m.DoctorEditPageModule)
   },
+  {
+    path: 'appointment-create/:id',
+    loadChildren: () => import('./pages/appointment-create/appointment-create.module').then( m => m.AppointmentCreatePageModule)
+  },
 
   
 ];

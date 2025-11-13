@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
       password: string;
     };
     console.log('Form Data:', formData);
-    this.logIn(formData);
+    this.logInUser(formData);
   }
 
   showData() {
@@ -45,6 +45,37 @@ export class LoginPage implements OnInit {
     console.log('after the test');
   }
 
+  logInUser(formData: { email: string; password: string }){
+    if (this.loginForm.valid) {
+      console.log(this.loginForm.value)
+       this.loginService.searchUser(formData).subscribe({
+        next: (user) =>{
+          console.log(user);
+          if(user.role == 'doctor'){
+            console.log('Entered doctor login data');
+            this.router.navigate(['/doctor-profile', user.id]);
+          } else {
+            console.log('Entered patient login data');
+            this.router.navigate(['/patient-home', user.id]);
+          }
+        },
+        error: (err)=>{
+          console.log('Error getting the user');
+        }
+       }
+       );
+       // .subscribe({
+      //   next: (patient) => {
+      //     this.router.navigate(['/patient-home', patient.id]);
+      //   },
+      //   error: (error) => {
+      //     console.log('There was an error finding the patient: ' + error);
+      //   },
+      // });
+    } else {
+      this.loginForm.markAllAsTouched();
+    }
+  }
   logIn(formData: { email: string; password: string }) {
     if (this.loginForm.valid) {
       // const formData = this.loginForm.value as {email:string, password:string};

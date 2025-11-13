@@ -23,8 +23,7 @@ export class PatientHomePage implements OnInit {
   ngOnInit() {
     this.patientId = this.route.snapshot.paramMap.get('id');
     console.log(this.patientId);
-    this.getPatient(this.patientId as string);
-    
+    this.getPatient(this.patientId as string);    
   }
 
   patientId: string | null = '';
@@ -43,6 +42,7 @@ export class PatientHomePage implements OnInit {
   }
 
   getPatient(idOfPatient:string){
+    console.log(this.patient);
     this.patientService.getPatientById(idOfPatient).subscribe({
       next: (patient)=>{
         this.patient = patient;
@@ -53,6 +53,10 @@ export class PatientHomePage implements OnInit {
       } 
     });
 
+  }
+
+  createAppointment(){
+    this.router.navigate(['/appointment-create', this.patient.id]);
   }
 
   

@@ -26,9 +26,7 @@ export class AppointmentEditPage implements OnInit {
   }
   
 
-  allDoctors:Doctor[] = [];
-
-  
+  allDoctors:Doctor[] = [];  
 
   getAllDoctors(){    
     this.doctorSevice.getAllDoctors().subscribe({
@@ -41,12 +39,12 @@ export class AppointmentEditPage implements OnInit {
     });
   }
 
-  createDoctor(doctor: Doctor){
-    this.doctorSevice.createDoctor(doctor).subscribe({
-      next: (response) => console.log("Doctor created:", response),
-      error: (err)=> console.log("Error creating doctor:", err)
-    });
-  }
+  // createDoctor(doctor: Doctor){
+  //   this.doctorSevice.createDoctor(doctor).subscribe({
+  //     next: (response) => console.log("Doctor created:", response),
+  //     error: (err)=> console.log("Error creating doctor:", err)
+  //   });
+  // }
 
 
 

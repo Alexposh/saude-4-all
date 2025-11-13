@@ -1,12 +1,15 @@
 <app-header></app-header>
 <ion-content [fullscreen]="true">
   <div class="flex-center">
-    <ion-card class="display-card">
-      <ion-img
+    <!-- <ion-card class="display-card"> -->
+      @if(patient){
+    <ion-img
         id="heading"
         src={{patient.image}}
-        alt="doctor image"
+        alt="patient image"
       ></ion-img>
+      }
+      
       <ion-card-header>
         <ion-card-title>Welcome back {{ patient.firstName }}!</ion-card-title>
       </ion-card-header>
@@ -33,7 +36,7 @@
         } @else{
             <ion-text>You don't have any appointments made.</ion-text>
           }
-         <ion-button routerLink="/next-appointments"
+         <ion-button (click)="createAppointment()"
           >Create appointment
           <!-- <ion-icon name="arrow-forward-circle-outline" ></ion-icon> -->
         </ion-button>
@@ -41,11 +44,11 @@
         <ion-button (click)="editProfile()"
           >Edit profile
           </ion-button>
-        <ion-button routerLink="/next-appointments"
+        <ion-button 
           >See all appointments
           <!-- <ion-icon name="arrow-forward-circle-outline" ></ion-icon> -->
         </ion-button>
       </ion-card-content>
-    </ion-card>
+    <!-- </ion-card> -->
   </div>
 </ion-content>
