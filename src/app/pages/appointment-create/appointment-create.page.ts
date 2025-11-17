@@ -8,6 +8,11 @@ import { Specialization } from 'src/app/models/specialization';
 import { SharedService } from 'src/app/services/shared/shared.service';
 import { Gender } from 'src/app/models/gender';
 import { DoctorService } from 'src/app/services/doctor/doctor.service';
+import { Clinic } from 'src/app/models/clinic';
+import { Appointment } from 'src/app/models/appointment';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AppointmentService } from 'src/app/services/appointment/appointment.service';
+import { AppointmentDto } from 'src/app/models/appointmentDto';
 
 @Component({
   selector: 'app-appointment-create',
@@ -18,12 +23,17 @@ import { DoctorService } from 'src/app/services/doctor/doctor.service';
 export class AppointmentCreatePage implements OnInit {
   private sharedService = inject(SharedService);
   private doctorService = inject(DoctorService);
+  private appointmentService = inject(AppointmentService);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
   doctors:Doctor[]=[];
   filteredDoctors :Doctor[] = [];
   specializations : Specialization[] = [];
-  locations = [];
+  locations: Clinic[] = [];
   genders : string[] = ["Male", "Female", "Doesn't matter"];
+  patientId: string | null = '';
+  selectedGender : string = "";
 
   constructor() { }
 
@@ -31,14 +41,15 @@ export class AppointmentCreatePage implements OnInit {
     specialization: new FormControl(''),
     gender:new FormControl(''),
     doctor_id: new FormControl(''),
-    patient_id: new FormControl(''),
     location_id: new FormControl(''),
     date: new FormControl('')
   });
 
   ngOnInit() {
+    this.patientId = this.route.snapshot.paramMap.get('id');
     this.getSpecializations();
     this.getDoctors();
+    this.getClinics();
   }
 
   getSpecializations() {
@@ -53,6 +64,17 @@ export class AppointmentCreatePage implements OnInit {
       });
     }
 
+  getClinics(){
+    this.sharedService.getAllClinics().subscribe({
+      next: (clinics:Clinic[]) =>{
+        this.locations = clinics;
+      },
+      error: (err)=>{
+        console.log("Couldn't load the locations: " + err);
+      }
+    })
+  }
+
   getDoctors() {
     this.doctorService.getAllDoctors().subscribe({
       next: (doctors) => {
@@ -65,11 +87,27 @@ export class AppointmentCreatePage implements OnInit {
         );
       },
     });
-  }
-  
+  } 
 
 
-  onSubmit(){
-    console.log("Submit the form:" + this.appointmentCreationForm.value);
+  onSubmit(){    
+    const appointmentDataForScheduling:AppointmentDto = {
+      // id: this.doctorId!,
+      doctorId: this.appointmentCreationForm.value.doctor_id!,
+      patientId: this.patientId,
+      locationId: this.appointmentCreationForm.value.location_id!,
+      dateOfAppointment: this.appointmentCreationForm.value.date!,
+    };
+
+    console.log(appointmentDataForScheduling);
+    this.appointmentService.createAppointment(appointmentDataForScheduling).subscribe({
+      next: (response) =>{
+        console.log("Scheduled succesfully, you will receive a confirmaton afte the doctor validates.");
+        this.router.navigate(['/patient-home', this.patientId]);
+      },
+      error: (err) =>{
+        console.log("Eroror while scheduling:" + err);
+      }
+    })
   }
 }

@@ -5,6 +5,7 @@ import { PatientService } from 'src/app/services/patient/patient.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from 'src/app/models/patient';
 import { Appointment } from 'src/app/models/appointment';
+import { AppointmentService } from 'src/app/services/appointment/appointment.service';
 
 @Component({
   selector: 'app-patient-home',
@@ -16,6 +17,7 @@ export class PatientHomePage implements OnInit {
 
  private patientService = inject(PatientService);
  private router = inject(Router);
+ private appointmentService = inject(AppointmentService);
  
 
   constructor(private route: ActivatedRoute) {}
@@ -23,7 +25,11 @@ export class PatientHomePage implements OnInit {
   ngOnInit() {
     this.patientId = this.route.snapshot.paramMap.get('id');
     console.log(this.patientId);
-    this.getPatient(this.patientId as string);    
+    this.getPatient(this.patientId as string); 
+    if(this.patientId){
+      this.getPatientAppointments(this.patientId);  
+    }
+    
   }
 
   patientId: string | null = '';
@@ -33,7 +39,15 @@ export class PatientHomePage implements OnInit {
 
 
   getPatientAppointments(idOfPatient:string){
-    
+    this.appointmentService.getAppointmentsForPatient(idOfPatient).subscribe({
+            next: (appointments) =>{
+        this.appointments = appointments;
+        console.log(appointments);
+      },
+      error: (error)=>{
+        console.log("Could not get the appointments for the user:" + error);
+      }
+    })
   }
 
   editProfile(){
@@ -42,7 +56,7 @@ export class PatientHomePage implements OnInit {
   }
 
   getPatient(idOfPatient:string){
-    console.log(this.patient);
+    // console.log(this.patient);
     this.patientService.getPatientById(idOfPatient).subscribe({
       next: (patient)=>{
         this.patient = patient;
@@ -58,6 +72,10 @@ export class PatientHomePage implements OnInit {
   createAppointment(){
     this.router.navigate(['/appointment-create', this.patient.id]);
   }
+
+  // getAppointments(idOfPatient:string){
+    
+  // }
 
   
 

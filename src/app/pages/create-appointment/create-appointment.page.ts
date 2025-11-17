@@ -100,10 +100,10 @@ export class CreateAppointmentPage implements OnInit {
     // let date = this.selectedDate;
     if (this.route.snapshot.paramMap.get('id')) {
       let appointmentContent = {
-        doctor_id: this.creationForm.value.doctor as string,
-        patient_id: this.route.snapshot.paramMap.get('id'),
-        location_id: this.creationForm.value.location as string,
-        date_of_appointment: this.creationForm.value.date,
+        doctorId: this.creationForm.value.doctor as string,
+        patientId: this.route.snapshot.paramMap.get('id'),
+        locationId: this.creationForm.value.location as string,
+        dateOfAppointment: this.creationForm.value.date,
       };
       console.log('Submit the form');
       // console.log(this.creationForm);

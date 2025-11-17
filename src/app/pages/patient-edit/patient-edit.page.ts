@@ -95,7 +95,7 @@ export class PatientEditPage implements OnInit {
       this.changePhoto = !this.changePhoto;
     }
     // console.log(this.patient.email);
-    const newDataForPatient: Patient = {
+    this.patient = {
       id: this.patientId!,
       firstName: this.patientEditForm.value.firstName!,
       lastName: this.patientEditForm.value.lastName!,
@@ -105,13 +105,13 @@ export class PatientEditPage implements OnInit {
       gender: this.patientEditForm.value.gender!,
       email: this.patient.email,
     };
-    console.log(newDataForPatient);
+    console.log(this.patient);
 
-    this.patientService.updatePatient(newDataForPatient).subscribe({
-      next: (updatedPatient: Patient) => {
-        this.patient = updatedPatient;
-        console.log('new patient structure: ' + updatedPatient);
-        this.getPatient(updatedPatient.id);
+    
+    this.patientService.updatePatient(this.patient).subscribe({
+      next: () => {        
+        // console.log(updatedPatient);
+        // this.getPatient(updatedPatient.id);
         this.router.navigate(['/patient-home', this.patient.id]);
       },
       error: (error) => {

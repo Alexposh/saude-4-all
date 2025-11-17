@@ -19,19 +19,19 @@
         <ion-item>
           <ion-icon name="calendar-outline"></ion-icon>
          
-            <ion-text>Your next appointment is on {{ appointments[0].date_of_appointment }}</ion-text>
+            <ion-text>Your next appointment is on {{ appointments[1].dateOfAppointment }}</ion-text>
           
           
         </ion-item>
 
         <ion-item>
           <ion-icon name="location-outline"></ion-icon>
-          <ion-text>Location</ion-text>
+          <ion-text>Appointment made at {{ appointments[1].locationId }}</ion-text>
         </ion-item>
 
         <ion-item>
           <ion-icon name="person-outline"></ion-icon>
-          <ion-text>Doctor Name</ion-text>
+          <ion-text>Doctor Name {{ appointments.length > 0 ? `doctor name: ${appointments[0].patientId}` : "We dont have appointments" }}</ion-text>
         </ion-item>
         } @else{
             <ion-text>You don't have any appointments made.</ion-text>

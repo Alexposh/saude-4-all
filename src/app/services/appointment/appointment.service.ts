@@ -21,8 +21,9 @@ export class AppointmentService {
 
   }
 
-  getAppointmentForPatient(){
-    
+  getAppointmentsForPatient(patientId:string){
+    return this.httpClient.get<Appointment[]>(`http://localhost:8080/api/v1/appointments/appointment/patient/${patientId}`,
+    )
   }
 
   createAppointment( newAppointment:AppointmentDto):Observable<AppointmentDto>{

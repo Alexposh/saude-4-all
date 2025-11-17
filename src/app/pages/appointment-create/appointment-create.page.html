@@ -39,7 +39,9 @@
               formControlName="doctor_id"
             >
               @for(doctor of doctors;track doctor){
-              <ion-select-option>{{`${doctor.firstName} ${doctor.lastName}`}}</ion-select-option>
+              <ion-select-option value="{{doctor.id}}"
+                >{{`${doctor.firstName} ${doctor.lastName}`}}</ion-select-option
+              >
               }
             </ion-select>
           </ion-item>
@@ -48,24 +50,38 @@
             <ion-select
               label="Location: "
               label-placement="floating"
-              formControlName="doctor_id"
+              formControlName="location_id"
             >
-              @for(spec of specializations;track spec){
-              <ion-select-option>Sample</ion-select-option>
+              @for(location of locations;track location){
+              <ion-select-option value="{{location.id}}"
+                >{{ location.name}}</ion-select-option
+              >
               }
             </ion-select>
           </ion-item>
 
+          <!-- <ion-item>
+            <ion-text>Date:</ion-text>
+            <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime
+                  id="datetime"
+                  formControlName="date"
+                  presentation="date"
+                  preferWheel="true"
+                >
+                </ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </ion-item> -->
+<!-- <ion-text>Date:</ion-text> -->
           <ion-item>
-            <ion-select
-              label="Date: "
-              label-placement="floating"
-              formControlName="date"
-            >
-              @for(spec of specializations;track spec){
-              <ion-select-option>Sample</ion-select-option>
-              }
-            </ion-select>
+          <!-- <ion-label stacked>label</ion-label> -->
+           
+          <!-- <ion-input  formControlName="date" class="hotfix" ></ion-input> -->
+          <ion-datetime formControlName="date" displayFormat="DD/MM/YYYY"></ion-datetime>
           </ion-item>
         </ion-list>
 
