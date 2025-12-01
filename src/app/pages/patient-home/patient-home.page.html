@@ -2,53 +2,69 @@
 <ion-content [fullscreen]="true">
   <div class="flex-center">
     <!-- <ion-card class="display-card"> -->
-      @if(patient){
-    <ion-img
-        id="heading"
-        src={{patient.image}}
-        alt="patient image"
-      ></ion-img>
+    @if(patient){
+    <ion-img id="heading" src="{{patient.image}}" alt="patient image"></ion-img>
+    }
+
+    <ion-card-header>
+      <ion-card-title>Welcome back {{ patient.firstName }}!</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      @if(appointments.length > 0){
+
+      <!-- <ion-icon name="calendar-outline"></ion-icon> -->
+      <ion-text>Your next appointments are: </ion-text>
+      <ion-accordion-group>
+        @for(appointment of appointments;track appointment){
+
+        <ion-accordion value="{{appointment.id}}">
+          <ion-item slot="header" color="light">
+            <ion-label>{{appointment.dateOfAppointment}}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <ion-item>
+              <ion-text>
+                {{appointment.doctorId}}
+              </ion-text>
+            </ion-item>
+            <ion-item>
+              <ion-text>
+                {{appointment.locationId}}
+              </ion-text>
+            </ion-item>
+            <ion-item>
+              <ion-text>
+                {{appointment.status}}
+              </ion-text>
+            </ion-item>
+          </div>
+        </ion-accordion>
+        }
+
+         <ion-accordion value="third">
+    <ion-item slot="header" color="light">
+      <ion-label>Third Accordion</ion-label>
+    </ion-item>
+    <div class="ion-padding" slot="content">Third Content</div>
+  </ion-accordion>
+
+      </ion-accordion-group>
+
+      } @else{
+      <ion-text>You don't have any appointments made.</ion-text>
       }
-      
-      <ion-card-header>
-        <ion-card-title>Welcome back {{ patient.firstName }}!</ion-card-title>
-      </ion-card-header>
+      <ion-button (click)="createAppointment()"
+        >Create appointment
+        <!-- <ion-icon name="arrow-forward-circle-outline" ></ion-icon> -->
+      </ion-button>
 
-      <ion-card-content>
-         @if(appointments.length > 0){
-        <ion-item>
-          <ion-icon name="calendar-outline"></ion-icon>
-         
-            <ion-text>Your next appointment is on {{ appointments[1].dateOfAppointment }}</ion-text>
-          
-          
-        </ion-item>
-
-        <ion-item>
-          <ion-icon name="location-outline"></ion-icon>
-          <ion-text>Appointment made at {{ appointments[1].locationId }}</ion-text>
-        </ion-item>
-
-        <ion-item>
-          <ion-icon name="person-outline"></ion-icon>
-          <ion-text>Doctor Name {{ appointments.length > 0 ? `doctor name: ${appointments[0].patientId}` : "We dont have appointments" }}</ion-text>
-        </ion-item>
-        } @else{
-            <ion-text>You don't have any appointments made.</ion-text>
-          }
-         <ion-button (click)="createAppointment()"
-          >Create appointment
-          <!-- <ion-icon name="arrow-forward-circle-outline" ></ion-icon> -->
-        </ion-button>
-
-        <ion-button (click)="editProfile()"
-          >Edit profile
-          </ion-button>
-        <ion-button 
-          >See all appointments
-          <!-- <ion-icon name="arrow-forward-circle-outline" ></ion-icon> -->
-        </ion-button>
-      </ion-card-content>
+      <ion-button (click)="editProfile()">Edit profile </ion-button>
+      <ion-button
+        >See all appointments
+        <!-- <ion-icon name="arrow-forward-circle-outline" ></ion-icon> -->
+      </ion-button>
+    </ion-card-content>
     <!-- </ion-card> -->
   </div>
 </ion-content>
