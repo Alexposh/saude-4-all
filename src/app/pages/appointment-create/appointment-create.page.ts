@@ -7,8 +7,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Specialization } from 'src/app/models/specialization';
 import { SharedService } from 'src/app/services/shared/shared.service';
 import { Gender } from 'src/app/models/gender';
+import { Location } from 'src/app/models/location'
 import { DoctorService } from 'src/app/services/doctor/doctor.service';
-import { Clinic } from 'src/app/models/clinic';
 import { Appointment } from 'src/app/models/appointment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppointmentService } from 'src/app/services/appointment/appointment.service';
@@ -30,7 +30,7 @@ export class AppointmentCreatePage implements OnInit {
   doctors:Doctor[]=[];
   filteredDoctors :Doctor[] = [];
   specializations : Specialization[] = [];
-  locations: Clinic[] = [];
+  locations: Location[] = [];
   genders : string[] = ["Male", "Female", "Doesn't matter"];
   patientId: string | null = '';
   selectedGender : string = "";
@@ -65,8 +65,8 @@ export class AppointmentCreatePage implements OnInit {
     }
 
   getClinics(){
-    this.sharedService.getAllClinics().subscribe({
-      next: (clinics:Clinic[]) =>{
+    this.sharedService.getAllLocations().subscribe({
+      next: (clinics:Location[]) =>{
         this.locations = clinics;
       },
       error: (err)=>{

@@ -1,8 +1,28 @@
 export interface Appointment{
     id: string;
-    doctorId: string;
+    doctor: {
+        dateOfBirth:string;
+        email:string;
+        firstName:string;
+        gender: string;
+        id: string;
+        image:string;
+        lastName:string;
+        specialization:string;
+
+    };
     patientId: string;
-    locationId: string;
-    dateOfAppointment: string;
+    location:{
+        city:string;
+        country:string;
+        id:string;
+        name:string;
+        number_extension: string;
+        street: string;
+        street_number: string;
+        zip_code:string;
+    };
+    dateOfAppointment: Date;
+    createdAt: Date;
     status:string;
 }

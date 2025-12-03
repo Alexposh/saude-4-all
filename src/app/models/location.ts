@@ -2,9 +2,9 @@ export interface Location{
     id: string;
     name: string;
     street: string;
-    number: number;
-    numberExtension: number;
+    street_number: string;
+    number_extension: string;
     country: string;
-    zipCode:string;
-    city:string;
+    zip_code: string;
+    city: string;
 }

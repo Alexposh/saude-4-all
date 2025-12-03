@@ -19,6 +19,14 @@ export class PatientHomePage implements OnInit {
  private router = inject(Router);
  private appointmentService = inject(AppointmentService);
  
+dateStr = "2025-11-16T12:13:04";
+date = new Date(this.dateStr);
+options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+formatted = this.date.toLocaleString('en-US', {year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+// Output: "Nov 16, 2025, 12:13 PM"
+
+ 
+ 
 
   constructor(private route: ActivatedRoute) {}
 
@@ -29,7 +37,7 @@ export class PatientHomePage implements OnInit {
     if(this.patientId){
       this.getPatientAppointments(this.patientId);  
     }
-    
+    console.log(this.formatted);
   }
 
   patientId: string | null = '';

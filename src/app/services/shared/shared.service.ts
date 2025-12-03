@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Clinic } from 'src/app/models/clinic';
+import { Location } from 'src/app/models/location';
 import { Gender } from 'src/app/models/gender';
 import { Specialization } from 'src/app/models/specialization';
 
@@ -23,7 +23,7 @@ export class SharedService {
     return this.httpClient.get<Specialization[]>(`${this.standardApi}/shared/specializations`);
   }
 
-  getAllClinics():Observable<Clinic[]>{
-    return this.httpClient.get<Clinic[]>(`${this.standardApi}/clinics`);
+  getAllLocations():Observable<Location[]>{
+    return this.httpClient.get<Location[]>(`${this.standardApi}/locations`);
   }
 }

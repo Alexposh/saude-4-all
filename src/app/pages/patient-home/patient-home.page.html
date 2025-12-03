@@ -20,37 +20,26 @@
 
         <ion-accordion value="{{appointment.id}}">
           <ion-item slot="header" color="light">
-            <ion-label>{{appointment.dateOfAppointment}}</ion-label>
+            <ion-label>
+              {{
+              appointment.dateOfAppointment
+            }}
+            </ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">
             <ion-item>
+              <img class="doc-profile" src="{{appointment.doctor.image}}" alt="patient image">
               <ion-text>
-                {{appointment.doctorId}}
-              </ion-text>
-            </ion-item>
-            <ion-item>
-              <ion-text>
-                {{appointment.locationId}}
-              </ion-text>
-            </ion-item>
-            <ion-item>
-              <ion-text>
-                {{appointment.status}}
+                {{appointment.doctor.firstName}} {{appointment.doctor.lastName}}
+                - {{appointment.location.name}} - {{appointment.status}}
               </ion-text>
             </ion-item>
           </div>
         </ion-accordion>
         }
 
-         <ion-accordion value="third">
-    <ion-item slot="header" color="light">
-      <ion-label>Third Accordion</ion-label>
-    </ion-item>
-    <div class="ion-padding" slot="content">Third Content</div>
-  </ion-accordion>
 
       </ion-accordion-group>
-
       } @else{
       <ion-text>You don't have any appointments made.</ion-text>
       }
