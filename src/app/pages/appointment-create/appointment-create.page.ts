@@ -56,7 +56,7 @@ export class AppointmentCreatePage implements OnInit {
       this.sharedService.getAllSpecializations().subscribe({
         next: (specializations: Specialization[]) => {
           this.specializations = specializations;
-          console.log('Specializations loaded:', this.specializations);
+          // console.log('Specializations loaded:', this.specializations);
         },
         error: (err) => {
           console.log('Error getting the list of specializations' + err);
