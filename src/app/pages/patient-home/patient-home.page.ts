@@ -3,7 +3,6 @@ import { HeaderComponent } from "src/app/shared/header/header.component";
 import { IonicModule } from "@ionic/angular";
 import { PatientService } from 'src/app/services/patient/patient.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Patient } from 'src/app/models/patient';
 import { Appointment } from 'src/app/models/appointment';
 import { AppointmentService } from 'src/app/services/appointment/appointment.service';
 
@@ -19,11 +18,6 @@ export class PatientHomePage implements OnInit {
  private router = inject(Router);
  private appointmentService = inject(AppointmentService);
  
-dateStr = "2025-11-16T12:13:04";
-date = new Date(this.dateStr);
-options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-formatted = this.date.toLocaleString('en-US', {year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -32,8 +26,8 @@ formatted = this.date.toLocaleString('en-US', {year: 'numeric', month: 'short', 
     this.getPatient(this.patientId as string); 
     if(this.patientId){
       this.getPatientAppointments(this.patientId);  
-    }
-    console.log(this.formatted);
+    } 
+    
   }
 
   patientId: string | null = '';
@@ -77,9 +71,21 @@ formatted = this.date.toLocaleString('en-US', {year: 'numeric', month: 'short', 
     this.router.navigate(['/appointment-create', this.patient.id]);
   }
 
-  // getAppointments(idOfPatient:string){
-    
-  // }
+
+
+
+  deleteAppointment(id:string){ 
+    console.log('deleteing the appt with id'+ id);
+    this.appointmentService.deleteAppointment(id).subscribe({
+      next: () =>{
+        console.log("deleted the appointment");
+        window.location.reload();
+      },
+      error:(err) =>{
+        console.log("error:" + err);
+      }
+    });
+  }
 
   
 

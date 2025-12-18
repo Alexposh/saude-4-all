@@ -70,6 +70,10 @@ const routes: Routes = [
     path: 'appointment-create/:id',
     loadChildren: () => import('./pages/appointment-create/appointment-create.module').then( m => m.AppointmentCreatePageModule)
   },
+  {
+    path: 'all-appointments',
+    loadChildren: () => import('./pages/all-appointments/all-appointments.module').then( m => m.AllAppointmentsPageModule)
+  },
 
   
 ];

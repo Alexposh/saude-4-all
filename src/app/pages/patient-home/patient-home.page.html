@@ -33,6 +33,8 @@
                 {{appointment.doctor.firstName}} {{appointment.doctor.lastName}}
                 - {{appointment.location.name}} - {{appointment.status}}
               </ion-text>
+
+              <ion-button (click)="deleteAppointment(appointment.id)">Delete</ion-button>
             </ion-item>
           </div>
         </ion-accordion>

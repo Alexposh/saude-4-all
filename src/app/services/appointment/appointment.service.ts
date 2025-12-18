@@ -14,7 +14,7 @@ export class AppointmentService {
   constructor() { }
 
   getAllAppointments():Observable<Appointment[]>{
-    return this.httpClient.get<Appointment[]>("whatever");
+    return this.httpClient.get<Appointment[]>("http://localhost:8080/api/v1/appointments/all");
   }
 
   getAppointmentsForDoctor(){
@@ -35,5 +35,9 @@ export class AppointmentService {
 
   updateAppointment(){
 
+  }
+
+  deleteAppointment(id:string){
+    return this.httpClient.delete(`http://localhost:8080/api/v1/appointments/delete/${id}`);
   }
 }

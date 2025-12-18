@@ -103,7 +103,9 @@ export class AppointmentCreatePage implements OnInit {
     this.appointmentService.createAppointment(appointmentDataForScheduling).subscribe({
       next: (response) =>{
         console.log("Scheduled succesfully, you will receive a confirmaton afte the doctor validates.");
-        this.router.navigate(['/patient-home', this.patientId]);
+        this.router.navigate(['/patient-home', this.patientId]).then(
+          ()=>{window.location.reload()}
+        );
       },
       error: (err) =>{
         console.log("Eroror while scheduling:" + err);
